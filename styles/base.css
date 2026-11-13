@@ -1,0 +1,41 @@
+/* --- Pengaturan Font Custom --- */
+@font-face {
+    font-family: 'Magic Balloon Demo';
+    src: url('../assests/fonts/MagicBaloonDemoRegular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: '5 Star Rounded';
+    src: url('../assests/fonts/5x5_rounded.ttf') format('truetype'); 
+}
+
+/* --- Variabel Warna & Reset --- */
+:root {
+    --deep-navy: #243B64;
+    --golden-yellow: #E5B52A;
+    --text-dark-blue: #172A46;
+    --off-white: #F7F9FC;
+    --pale-blue: #DCEFF5;
+    --black: #000000;
+    --yellow: #f5b800;
+    --light-gray: #CECECE;
+    --gray: #8C8C8C;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Baloo 2', sans-serif; /* Default font */
+    background-color: var(--off-white); /* Warna biru muda luar */
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+}

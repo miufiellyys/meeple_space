@@ -1,0 +1,65 @@
+/* --- Footer --- */
+.footer {
+    background-color: var(--deep-navy, #223254);
+    color: white;
+    padding: 40px;
+    margin-top: 40px;
+    font-family: 'Baloo 2', sans-serif;
+}
+
+.footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.footer__brand {
+    font-family: '5 Star Rounded', 'Baloo 2', sans-serif;
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer__inner p {
+    margin-bottom: 15px;
+    color: var(--pale-blue, #DCEFF5);
+}
+
+.footer__cta {
+    display: inline-block;
+    background-color: var(--golden-yellow, #f2bc38);
+    color: var(--text-dark-blue, #172A46);
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer__explore h4 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer__explore a {
+    display: block;
+    color: var(--pale-blue, #DCEFF5);
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.footer__explore a:hover {
+    color: white;
+}
+
+.footer__copy {
+    text-align: left;
+    margin-left: 200px;
+    color: var(--light-gray, #CECECE);
+    font-size: 0.9rem;
+}

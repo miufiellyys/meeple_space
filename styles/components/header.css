@@ -1,0 +1,47 @@
+.navbar {
+    background-color: var(--deep-navy, #223254);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid white;
+    padding-bottom: 2px;
+}
+
+.btn-auth {
+    background-color: var(--golden-yellow, #f2bc38);
+    color: var(--text-dark-blue, #202b46);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-family: 'Baloo 2', sans-serif;
+    cursor: pointer;
+}

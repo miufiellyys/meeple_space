@@ -1,0 +1,14 @@
+.menu-filter {
+  display: flex;
+  gap: 12px;
+  margin: 26px 0 8px;
+}
+.menu-group-title {
+  color: var(--deep-navy);
+  font-weight: 800;
+  font-size: 16px;
+  margin: 26px 0 14px;
+}
+.menu-page .menu-card .thumb {
+  aspect-ratio: 16 / 9;
+}

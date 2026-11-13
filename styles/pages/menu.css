@@ -1,0 +1,154 @@
+@import url('../base.css');
+@import url('../components/header.css');
+@import url('../components/footer.css');
+
+/* --- Layout Utama --- */
+.menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Hero Section --- */
+.menu-hero {
+    /* Gunakan warna background atau gambar wave milikmu di sini */
+    background-color: var(--pale-blue, #DCEFF5);
+    border-radius: 0 0 40px 40px; /* Memberi efek lengkungan lembut di bawah */
+    padding: 50px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.menu-hero-title {
+    font-family: 'Magic Balloon Demo', 'Baloo 2', cursive;
+    font-size: 3.5rem;
+    color: var(--deep-navy, #243B64);
+    margin-bottom: 10px;
+}
+
+.menu-hero-subtitle {
+    font-family: '5 Star Rounded', 'Baloo 2', sans-serif;
+    color: var(--deep-navy, #243B64);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    max-width: 400px;
+}
+
+.menu-hero-illustration img {
+    max-width: 300px;
+    height: auto;
+}
+
+/* --- Filter Buttons --- */
+.menu-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    background-color: #ffffff;
+    border: 1px solid var(--light-gray, #CECECE);
+    color: var(--deep-navy, #243B64);
+    padding: 8px 30px;
+    border-radius: 20px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--golden-yellow, #E5B52A);
+    border-color: var(--golden-yellow, #E5B52A);
+}
+
+/* --- Menu Category & Grid --- */
+.menu-category {
+    padding: 0 20px;
+}
+
+.category-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    color: var(--deep-navy, #243B64);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* --- Menu Cards (Gaya Dark Navy) --- */
+.menu-card {
+    background-color: var(--deep-navy, #243B64);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.menu-card-img {
+    height: 170px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.menu-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu-card-body {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--deep-navy, #243B64);
+}
+
+.menu-card-info {
+    color: white;
+}
+
+.menu-card-info h3 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.menu-card-info p {
+    font-size: 0.85rem;
+    color: var(--pale-blue, #DCEFF5);
+}
+
+.btn-add {
+    background-color: var(--golden-yellow, #E5B52A);
+    color: var(--deep-navy, #243B64);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.btn-add:hover {
+    transform: scale(1.1);
+}

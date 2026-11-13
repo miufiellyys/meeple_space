@@ -1,0 +1,121 @@
+/* --- Kartu game & kartu menu (dipakai Home, bisa dipakai halaman lain) --- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* Area gambar: menampilkan nama item sebagai placeholder, tertutup otomatis saat <img> dipasang */
+.game-card-img,
+.menu-card-img {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background-color: var(--pale-blue, #dceff5);
+  color: var(--deep-navy, #243b64);
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+}
+.game-card-img::before,
+.menu-card-img::before {
+  content: attr(data-label);
+}
+.game-card-img img,
+.menu-card-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Kartu game --- */
+.game-card {
+  background-color: var(--deep-navy, #243b64);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.game-card-img {
+  height: 190px;
+}
+.game-card-body {
+  padding: 14px 15px 16px;
+  color: white;
+}
+.game-card-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.game-card-meta {
+  font-size: 0.8rem;
+  color: var(--pale-blue, #dceff5);
+  margin-bottom: 10px;
+}
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tag {
+  background-color: var(--light-gray, #cecece);
+  color: var(--text-dark-blue, #172a46);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 20px;
+}
+.tag--active {
+  background-color: var(--golden-yellow, #e5b52a);
+}
+
+/* --- Kartu menu (gaya sama dengan pages/menu.css) --- */
+.menu-card {
+  background-color: var(--deep-navy, #243b64);
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.menu-card-img {
+  height: 170px;
+}
+.menu-card-body {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-card-info {
+  color: white;
+}
+.menu-card-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.menu-card-info p {
+  font-size: 0.85rem;
+  color: var(--pale-blue, #dceff5);
+}
+.btn-add {
+  background-color: var(--golden-yellow, #e5b52a);
+  color: var(--deep-navy, #243b64);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+.btn-add:hover {
+  transform: scale(1.1);
+}

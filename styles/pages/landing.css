@@ -1,0 +1,189 @@
+/* Gaya khusus halaman Home. Navbar -> components/header.css, footer -> components/footer.css */
+
+/* --- Hero --- */
+.hero {
+  /* Ganti dengan foto hero: hapus baris gradient di bawah, lalu aktifkan baris url() ini
+       background: url('../../assests/hero-home.jpg') no-repeat center center / cover; */
+  background: linear-gradient(135deg, #8fc3e4 0%, #dcebf5 55%, #f3d9a4 100%);
+  padding: 80px 20px;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-content {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 800px;
+}
+.badge {
+  display: inline-block;
+  background-color: var(--golden-yellow, #e5b52a);
+  color: var(--text-dark-blue, #172a46);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+.hero-title {
+  font-family: "Magic Balloon Demo", "Baloo 2", cursive;
+  color: var(--deep-navy, #243b64);
+  font-size: 2.8rem;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+.hero-subtitle {
+  font-family: "5 Star Rounded", "Baloo 2", sans-serif;
+  color: #4a5568;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* --- Fitur (Random Picker & Quiz) --- */
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 40px;
+  background-color: var(--off-white, #f7f9fc);
+}
+.card {
+  border: 2px solid var(--deep-navy, #243b64);
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.card-title {
+  font-family: "5 Star Rounded", "Baloo 2", sans-serif;
+  color: var(--deep-navy, #243b64);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  min-height: 55px;
+}
+.card-body.split {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.card-body.block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.card-img img {
+  width: 120px;
+  height: auto;
+}
+.wheel-placeholder {
+  /* hapus bila gambar roda sudah dipasang */
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--deep-navy, #243b64);
+  background: conic-gradient(
+    #243b64 0 25%,
+    #8fc3e4 0 50%,
+    #243b64 0 75%,
+    #8fc3e4 0
+  );
+}
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+.card-body p {
+  font-size: 1rem;
+  color: var(--deep-navy, #243b64);
+  font-weight: 500;
+}
+.btn-try {
+  background-color: var(--golden-yellow, #e5b52a);
+  color: var(--text-dark-blue, #172a46);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: "Baloo 2", sans-serif;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: background 0.3s;
+}
+.btn-try:hover {
+  background-color: #dca72f;
+}
+
+/* --- Section: Trending & Favorite Menu --- */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 0;
+}
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.section-eyebrow {
+  color: var(--golden-yellow, #e5b52a);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: "5 Star Rounded", "Baloo 2", sans-serif;
+  color: var(--deep-navy, #243b64);
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.section-sub {
+  color: var(--gray, #8c8c8c);
+  font-size: 0.9rem;
+}
+.see-all {
+  color: var(--gray, #8c8c8c);
+  text-decoration: none;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.see-all:hover {
+  color: var(--deep-navy, #243b64);
+}
+
+/* --- Responsif --- */
+@media (max-width: 900px) {
+  .features {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section {
+    padding: 32px 20px 0;
+  }
+  .navbar {
+    padding: 12px 20px;
+  }
+  .nav-links {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+}
