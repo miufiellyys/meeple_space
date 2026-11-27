@@ -119,3 +119,26 @@
 .btn-add:hover {
   transform: scale(1.1);
 }
+
+/* --- Kotak foto: slot kosong bergaris putus-putus sampai <img> dipasang --- */
+.game-card-img,
+.menu-card-img {
+  font-size: 0.9rem;
+}
+.game-card-img::before,
+.menu-card-img::before {
+  content: "\1F4F7  " attr(data-label);
+}
+.game-card-img::after,
+.menu-card-img::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 2px dashed #8cb4c9;
+  border-radius: 10px;
+  pointer-events: none;
+}
+.game-card-img img,
+.menu-card-img img {
+  z-index: 1; /* foto menutupi slot kosong */
+}

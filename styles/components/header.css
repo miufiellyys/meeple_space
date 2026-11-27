@@ -45,3 +45,21 @@
     font-family: 'Baloo 2', sans-serif;
     cursor: pointer;
 }
+
+/* Tombol login berupa link, dan avatar saat sudah login */
+a.btn-auth {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--golden-yellow, #f2bc38);
+    color: var(--text-dark-blue, #202b46);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    text-decoration: none;
+}

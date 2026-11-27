@@ -1,3 +1,39 @@
+<?php
+require_once __DIR__ . "/config/helpers.php";
+
+// Folder foto (nama folder mengandung spasi, jadi di-encode saat dicetak ke URL)
+$imgGame = "assests/images/img boardgame/";
+$imgMenu = "assests/images/img makanan/";
+
+// Data kartu "Trending" (foto => nama file di folder img boardgame)
+$trendingGames = [
+    ["name" => "Uno Wild",     "img" => "unowild.jpg",       "meta" => "3-6 players &middot; 30 min",    "tags" => ["Card Game", "Party Game", "Easy"]],
+    ["name" => "Se - Kata",    "img" => "sekata.jpg",       "meta" => "3-10 players &middot; 5-10 min", "tags" => ["Card Game", "Word Game", "Medium"]],
+    ["name" => "Uno No Mercy", "img" => "unonomercyy.jpg",  "meta" => "3-6 players &middot; 25 min",    "tags" => ["Card Game", "Strategy", "Medium"]],
+    ["name" => "Uno Flip",     "img" => "unoflip.jpg",      "meta" => "3-6 players &middot; 30 min",    "tags" => ["Card Game", "Family Game", "Easy"]],
+    ["name" => "Monopoly",     "img" => "monopolyy.jpg",    "meta" => "3-10 players &middot; 5-10 min", "tags" => ["Board Game", "Strategy", "Hard"]],
+    ["name" => "T-C-G-F-P",    "img" => "TCGCP.jpg",        "meta" => "3-8 players &middot; 20 min",    "tags" => ["Card Game", "Reflex Game", "Easy"]],
+];
+
+// Data kartu "Favorite Menu" (foto => nama file di folder img makanan)
+$favoriteMenu = [
+    ["name" => "Chicken Katsu",          "img" => "chickenkatsu.jpg",         "price" => "Rp. 30.000"],
+    ["name" => "Rice With Anchovies",    "img" => "nasiikanteri.jpg",         "price" => "Rp. 30.000"],
+    ["name" => "Spaghetti Bolognese",    "img" => "pastabolognese.jpg",       "price" => "Rp. 30.000"],
+    ["name" => "Spaghetti Carbonara",    "img" => "pastacarbonara.jpg",       "price" => "Rp. 30.000"],
+    ["name" => "Chicken Katsu Teriyaki", "img" => "chickenkatsuteriyaki.jpg", "price" => "Rp. 30.000"],
+    ["name" => "Indomie Goreng",         "img" => "miegoreng.jpg",            "price" => "Rp. 30.000"],
+    ["name" => "Indomie Soto",           "img" => "miesoto.jpg",              "price" => "Rp. 30.000"],
+    ["name" => "Indomie Goreng Special", "img" => "miekaldu.jpg",             "price" => "Rp. 30.000"],
+    ["name" => "Indomie Rendang",        "img" => "mierendang.jpg",           "price" => "Rp. 30.000"],
+];
+
+/** Susun URL foto: encode tiap bagian path supaya spasi/kurung aman. */
+function imgUrl(string $folder, string $file): string
+{
+    return implode('/', array_map('rawurlencode', explode('/', rtrim($folder, '/')))) . '/' . rawurlencode($file);
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -12,7 +48,6 @@
 <div class="wrapper">
 
     <?php require_once __DIR__ . "/components/landing/header.php" ?>
-   
 
     <!-- ===== Hero (foto latar: styles/pages/landing.css, bagian .hero) ===== -->
     <section class="hero">
@@ -30,7 +65,6 @@
             <div class="card-body split">
                 <div class="card-img">
                     <div class="wheel-placeholder"></div>
-                    <!-- Ganti dengan gambar roda: <img src="assests/spin-wheel.png" alt="Spin wheel"> -->
                 </div>
                 <div class="card-info">
                     <p>Pick a random boardgame for the day!</p>
@@ -56,93 +90,25 @@
                 <h2 class="section-title">It's trending right now</h2>
                 <p class="section-sub">The game most frequently found sitting on cafe tables.</p>
             </div>
-            <a href="#" class="see-all">See All &rarr;</a>
+            <a href="/pages/boardgames.php" class="see-all">See All &rarr;</a>
         </div>
         <div class="card-grid">
+            <?php foreach ($trendingGames as $game): ?>
             <article class="game-card">
-                <div class="game-card-img" data-label="Uno Wild">
-                    <!-- Ganti dengan foto cover: <img src="assests/uno-wild.jpg" alt="Uno Wild"> -->
+                <div class="game-card-img" data-label="<?= e($game['name']) ?>">
+                    <img src="<?= e(imgUrl($imgGame, $game['img'])) ?>" alt="<?= e($game['name']) ?>" loading="lazy">
                 </div>
                 <div class="game-card-body">
-                    <h3>Uno Wild</h3>
-                    <p class="game-card-meta">3-6 players &middot; 30 min</p>
+                    <h3><?= e($game['name']) ?></h3>
+                    <p class="game-card-meta"><?= $game['meta'] ?></p>
                     <div class="tags">
-                        <span class="tag tag--active">Card Game</span>
-                        <span class="tag">Party Game</span>
-                        <span class="tag">Easy</span>
+                        <?php foreach ($game['tags'] as $i => $tag): ?>
+                            <span class="tag<?= $i === 0 ? ' tag--active' : '' ?>"><?= e($tag) ?></span>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </article>
-            <article class="game-card">
-                <div class="game-card-img" data-label="Se - Kata">
-                    <!-- Ganti dengan foto cover: <img src="assests/se-kata.jpg" alt="Se - Kata"> -->
-                </div>
-                <div class="game-card-body">
-                    <h3>Se - Kata</h3>
-                    <p class="game-card-meta">3-10 players &middot; 5-10 min</p>
-                    <div class="tags">
-                        <span class="tag tag--active">Card Game</span>
-                        <span class="tag">Word Game</span>
-                        <span class="tag">Medium</span>
-                    </div>
-                </div>
-            </article>
-            <article class="game-card">
-                <div class="game-card-img" data-label="Uno No Mercy">
-                    <!-- Ganti dengan foto cover: <img src="assests/uno-no-mercy.jpg" alt="Uno No Mercy"> -->
-                </div>
-                <div class="game-card-body">
-                    <h3>Uno No Mercy</h3>
-                    <p class="game-card-meta">3-6 players &middot; 25 min</p>
-                    <div class="tags">
-                        <span class="tag tag--active">Card Game</span>
-                        <span class="tag">Strategy</span>
-                        <span class="tag">Medium</span>
-                    </div>
-                </div>
-            </article>
-            <article class="game-card">
-                <div class="game-card-img" data-label="Uno Flip">
-                    <!-- Ganti dengan foto cover: <img src="assests/uno-flip.jpg" alt="Uno Flip"> -->
-                </div>
-                <div class="game-card-body">
-                    <h3>Uno Flip</h3>
-                    <p class="game-card-meta">3-6 players &middot; 30 min</p>
-                    <div class="tags">
-                        <span class="tag tag--active">Card Game</span>
-                        <span class="tag">Family Game</span>
-                        <span class="tag">Easy</span>
-                    </div>
-                </div>
-            </article>
-            <article class="game-card">
-                <div class="game-card-img" data-label="Monopoly">
-                    <!-- Ganti dengan foto cover: <img src="assests/monopoly.jpg" alt="Monopoly"> -->
-                </div>
-                <div class="game-card-body">
-                    <h3>Monopoly</h3>
-                    <p class="game-card-meta">3-10 players &middot; 5-10 min</p>
-                    <div class="tags">
-                        <span class="tag tag--active">Board Game</span>
-                        <span class="tag">Strategy</span>
-                        <span class="tag">Hard</span>
-                    </div>
-                </div>
-            </article>
-            <article class="game-card">
-                <div class="game-card-img" data-label="T-C-G-F-P">
-                    <!-- Ganti dengan foto cover: <img src="assests/tcgfp.jpg" alt="T-C-G-F-P"> -->
-                </div>
-                <div class="game-card-body">
-                    <h3>T-C-G-F-P</h3>
-                    <p class="game-card-meta">3-8 players &middot; 20 min</p>
-                    <div class="tags">
-                        <span class="tag tag--active">Card Game</span>
-                        <span class="tag">Reflex Game</span>
-                        <span class="tag">Easy</span>
-                    </div>
-                </div>
-            </article>
+            <?php endforeach; ?>
         </div>
     </section>
 
@@ -154,119 +120,26 @@
                 <h2 class="section-title">Favorite Menu Items</h2>
                 <p class="section-sub">The most frequently consumed menu item.</p>
             </div>
-            <a href="#" class="see-all">See All &rarr;</a>
+            <a href="/pages/menu.php" class="see-all">See All &rarr;</a>
         </div>
         <div class="card-grid">
+            <?php foreach ($favoriteMenu as $item): ?>
             <article class="menu-card">
-                <div class="menu-card-img" data-label="Chicken Katsu">
-                    <!-- Ganti dengan foto makanan: <img src="assests/chicken-katsu.jpg" alt="Chicken Katsu"> -->
+                <div class="menu-card-img" data-label="<?= e($item['name']) ?>">
+                    <img src="<?= e(imgUrl($imgMenu, $item['img'])) ?>" alt="<?= e($item['name']) ?>" loading="lazy">
                 </div>
                 <div class="menu-card-body">
                     <div class="menu-card-info">
-                        <h3>Chicken Katsu</h3>
-                        <p>Rp. 30.000</p>
+                        <h3><?= e($item['name']) ?></h3>
+                        <p><?= e($item['price']) ?></p>
                     </div>
-                    <button class="btn-add" type="button" aria-label="Add Chicken Katsu">+</button>
+                    <button class="btn-add" type="button" aria-label="Add <?= e($item['name']) ?>">+</button>
                 </div>
             </article>
-            <article class="menu-card">
-                <div class="menu-card-img" data-label="Rice With Anchovies">
-                    <!-- Ganti dengan foto makanan: <img src="assests/rice-anchovies.jpg" alt="Rice With Anchovies"> -->
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-info">
-                        <h3>Rice With Anchovies</h3>
-                        <p>Rp. 30.000</p>
-                    </div>
-                    <button class="btn-add" type="button" aria-label="Add Rice With Anchovies">+</button>
-                </div>
-            </article>
-            <article class="menu-card">
-                <div class="menu-card-img" data-label="Spaghetti Bolognese">
-                    <!-- Ganti dengan foto makanan: <img src="assests/spaghetti-bolognese.jpg" alt="Spaghetti Bolognese"> -->
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-info">
-                        <h3>Spaghetti Bolognese</h3>
-                        <p>Rp. 30.000</p>
-                    </div>
-                    <button class="btn-add" type="button" aria-label="Add Spaghetti Bolognese">+</button>
-                </div>
-            </article>
-            <article class="menu-card">
-                <div class="menu-card-img" data-label="Spaghetti Carbonara">
-                    <!-- Ganti dengan foto makanan: <img src="assests/spaghetti-carbonara.jpg" alt="Spaghetti Carbonara"> -->
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-info">
-                        <h3>Spaghetti Carbonara</h3>
-                        <p>Rp. 30.000</p>
-                    </div>
-                    <button class="btn-add" type="button" aria-label="Add Spaghetti Carbonara">+</button>
-                </div>
-            </article>
-            <article class="menu-card">
-                <div class="menu-card-img" data-label="Chicken Katsu Teriyaki">
-                    <!-- Ganti dengan foto makanan: <img src="assests/chicken-katsu-teriyaki.jpg" alt="Chicken Katsu Teriyaki"> -->
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-info">
-                        <h3>Chicken Katsu Teriyaki</h3>
-                        <p>Rp. 30.000</p>
-                    </div>
-                    <button class="btn-add" type="button" aria-label="Add Chicken Katsu Teriyaki">+</button>
-                </div>
-            </article>
-            <article class="menu-card">
-                <div class="menu-card-img" data-label="Indomie Goreng">
-                    <!-- Ganti dengan foto makanan: <img src="assests/indomie-goreng.jpg" alt="Indomie Goreng"> -->
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-info">
-                        <h3>Indomie Goreng</h3>
-                        <p>Rp. 30.000</p>
-                    </div>
-                    <button class="btn-add" type="button" aria-label="Add Indomie Goreng">+</button>
-                </div>
-            </article>
-            <article class="menu-card">
-                <div class="menu-card-img" data-label="Indomie Soto">
-                    <!-- Ganti dengan foto makanan: <img src="assests/indomie-soto.jpg" alt="Indomie Soto"> -->
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-info">
-                        <h3>Indomie Soto</h3>
-                        <p>Rp. 30.000</p>
-                    </div>
-                    <button class="btn-add" type="button" aria-label="Add Indomie Soto">+</button>
-                </div>
-            </article>
-            <article class="menu-card">
-                <div class="menu-card-img" data-label="Indomie Goreng Special">
-                    <!-- Ganti dengan foto makanan: <img src="assests/indomie-goreng-special.jpg" alt="Indomie Goreng Special"> -->
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-info">
-                        <h3>Indomie Goreng Special</h3>
-                        <p>Rp. 30.000</p>
-                    </div>
-                    <button class="btn-add" type="button" aria-label="Add Indomie Goreng Special">+</button>
-                </div>
-            </article>
-            <article class="menu-card">
-                <div class="menu-card-img" data-label="Indomie Rendang">
-                    <!-- Ganti dengan foto makanan: <img src="assests/indomie-rendang.jpg" alt="Indomie Rendang"> -->
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-info">
-                        <h3>Indomie Rendang</h3>
-                        <p>Rp. 30.000</p>
-                    </div>
-                    <button class="btn-add" type="button" aria-label="Add Indomie Rendang">+</button>
-                </div>
-            </article>
+            <?php endforeach; ?>
         </div>
     </section>
+
     <?php require_once __DIR__ . "/components/landing/footer.php" ?>
 </div>
 </body>
